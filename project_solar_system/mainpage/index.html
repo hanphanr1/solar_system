@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="image/logo.ico">
+    <title>Khám phá Hệ Mặt Trời</title>
+    <style>
+        /* CSS giữ nguyên như mã gốc của bạn */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a2a;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #00bfff;
+        }
+        
+        .hero {
+            height: 80vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            overflow: hidden;
+        }
+        
+        .solar-system {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .sun {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #ff9d00, #ff4500);
+            border-radius: 50%;
+            box-shadow: 0 0 50px #ff4500, 0 0 100px #ff4500;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+        
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            transform-origin: center;
+            animation-name: orbit;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); }
+        }
+        
+        #mercury-orbit {
+            width: 220px;
+            height: 220px;
+        }
+        
+        #mercury {
+            width: 10px;
+            height: 10px;
+            background-color: #BDBDBD;
+            --orbit-radius: 110px;
+            top: 50%;
+            left: 50%;
+            margin-top: -5px;
+            margin-left: -5px;
+            animation-duration: 10s;
+            box-shadow: 0 0 10px rgba(189, 189, 189, 0.6);
+        }
+        
+        #venus-orbit {
+            width: 280px;
+            height: 280px;
+        }
+        
+        #venus {
+            width: 15px;
+            height: 15px;
+            background-color: #E29468;
+            --orbit-radius: 140px;
+            top: 50%;
+            left: 50%;
+            margin-top: -7.5px;
+            margin-left: -7.5px;
+            animation-duration: 15s;
+            box-shadow: 0 0 10px rgba(226, 148, 104, 0.6);
+        }
+        
+        #earth-orbit {
+            width: 360px;
+            height: 360px;
+        }
+        
+        #earth {
+            width: 16px;
+            height: 16px;
+            background-color: #3F51B5;
+            --orbit-radius: 180px;
+            top: 50%;
+            left: 50%;
+            margin-top: -8px;
+            margin-left: -8px;
+            animation-duration: 20s;
+            box-shadow: 0 0 10px rgba(63, 81, 181, 0.6);
+        }
+        
+        #mars-orbit {
+            width: 440px;
+            height: 440px;
+        }
+        
+        #mars {
+            width: 12px;
+            height: 12px;
+            background-color: #C62828;
+            --orbit-radius: 220px;
+            top: 50%;
+            left: 50%;
+            margin-top: -6px;
+            margin-left: -6px;
+            animation-duration: 25s;
+            box-shadow: 0 0 10px rgba(198, 40, 40, 0.6);
+        }
+        
+        #jupiter-orbit {
+            width: 540px;
+            height: 540px;
+        }
+        
+        #jupiter {
+            width: 30px;
+            height: 30px;
+            background-color: #E8B71D;
+            --orbit-radius: 270px;
+            top: 50%;
+            left: 50%;
+            margin-top: -15px;
+            margin-left: -15px;
+            animation-duration: 32s;
+            box-shadow: 0 0 10px rgba(232, 183, 29, 0.6);
+        }
+        
+        #saturn-orbit {
+            width: 640px;
+            height: 640px;
+        }
+        
+        #saturn {
+            width: 26px;
+            height: 26px;
+            background-color: #E6A422;
+            border: 4px solid rgba(210, 180, 140, 0.4);
+            --orbit-radius: 320px;
+            top: 50%;
+            left: 50%;
+            margin-top: -13px;
+            margin-left: -13px;
+            animation-duration: 40s;
+            box-shadow: 0 0 10px rgba(230, 164, 34, 0.6);
+        }
+        
+        #uranus-orbit {
+            width: 720px;
+            height: 720px;
+        }
+        
+        #uranus {
+            width: 18px;
+            height: 18px;
+            background-color: #80DEEA;
+            --orbit-radius: 360px;
+            top: 50%;
+            left: 50%;
+            margin-top: -9px;
+            margin-left: -9px;
+            animation-duration: 48s;
+            box-shadow: 0 0 10px rgba(128, 222, 234, 0.6);
+        }
+        
+        #neptune-orbit {
+            width: 800px;
+            height: 800px;
+        }
+        
+        #neptune {
+            width: 17px;
+            height: 17px;
+            background-color: #1E88E5;
+            --orbit-radius: 400px;
+            top: 50%;
+            left: 50%;
+            margin-top: -8.5px;
+            margin-left: -8.5px;
+            animation-duration: 56s;
+            box-shadow: 0 0 10px rgba(30, 136, 229, 0.6);
+        }
+        
+        .hero:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+        
+        .hero-content {
+            z-index: 3;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.7);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #00bfff, #6a11cb);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            margin: 0.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            z-index: 3;
+            position: relative;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #00bfff;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00bfff;
+        }
+        
+        .card p {
+            margin-bottom: 1rem;
+        }
+        
+        .planet-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 0;
+        }
+        
+        .planet-card {
+            display: flex;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            width: 100%;
+            max-width: 900px;
+        }
+        
+        .planet-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .planet-details {
+            padding: 2rem;
+        }
+        
+        .planet-details h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #00bfff;
+        }
+        
+        .fact-section {
+            background: linear-gradient(135deg, #0a0a2a, #1a1a4a);
+            padding: 4rem 0;
+        }
+        
+        .fact-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .fact-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00bfff;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            margin: 2rem 0;
+        }
+        
+        .video-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 3rem 5%;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: #00bfff;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.7rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #00bfff;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+        }
+        
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle 5s infinite;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation (giữ nguyên) -->
+    <nav class="navbar">
+        <a href="#" class="logo">Hệ Mặt Trời</a>
+        <ul class="nav-links">
+            <li><a href="#home">Trang chủ</a></li>
+            <li><a href="#sun">Thông tin chi tiết</a></li>
+            <li><a href="#explore">Khám phá vũ trụ</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section with Animated Solar System -->
+    <section id="home" class="hero">
+        <div class="solar-system">
+            <div class="stars" id="stars"></div>
+            <div class="sun"></div>
+            <div class="orbit" id="mercury-orbit">
+                <div class="planet" id="mercury"></div>
+            </div>
+            <div class="orbit" id="venus-orbit">
+                <div class="planet" id="venus"></div>
+            </div>
+            <div class="orbit" id="earth-orbit">
+                <div class="planet" id="earth"></div>
+            </div>
+            <div class="orbit" id="mars-orbit">
+                <div class="planet" id="mars"></div>
+            </div>
+            <div class="orbit" id="jupiter-orbit">
+                <div class="planet" id="jupiter"></div>
+            </div>
+            <div class="orbit" id="saturn-orbit">
+                <div class="planet" id="saturn"></div>
+            </div>
+            <div class="orbit" id="uranus-orbit">
+                <div class="planet" id="uranus"></div>
+            </div>
+            <div class="orbit" id="neptune-orbit">
+                <div class="planet" id="neptune"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1>Khám phá Hệ Mặt Trời</h1>
+            <p>Hệ Mặt Trời bao gồm Mặt Trời và 8 hành tinh quay quanh nó. Hãy cùng khám phá những điều thú vị về không gian!</p>
+            <div>
+                <a href="#sun" class="btn">Xem thêm</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sun Section -->
+    <section id="sun" class="container">
+        <h2 class="section-title">Mặt Trời - Ngôi sao trung tâm</h2>
+        <div class="planet-info">
+            <div class="planet-card">
+                <img src="https://bgr.com/wp-content/uploads/2021/12/AdobeStock_281795067.jpeg?quality=82&strip=all&w=1020&h=574&crop=1" alt="Mặt Trời">
+                <div class="planet-details">
+                    <h3>Mặt Trời</h3>
+                    <p>Mặt Trời là ngôi sao ở trung tâm Hệ Mặt Trời, chiếm khoảng 99,86% khối lượng của toàn bộ Hệ Mặt Trời. Đây là một khối khí nóng khổng lồ với nhiệt độ bề mặt khoảng 5.500°C và nhiệt độ lõi lên đến 15 triệu độ C.</p>
+                    <p>Khám phá thêm về Mặt Trời qua mô hình 3D chi tiết!</p>
+                    <a href="../page_setup/index.html" class="btn">Khám phá chi tiết</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planets Section -->
+    <section id="planets" class="container">
+        <h2 class="section-title">Hành tinh trong Hệ Mặt Trời</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://science.nasa.gov/wp-content/uploads/2024/03/pia15162-mercury-basins-messenger-16x9-1.jpg?resize=1536,864" alt="Sao Thủy">
+                <div class="card-content">
+                    <h3>Sao Thủy</h3>
+                    <p>Hành tinh nhỏ nhất và gần Mặt Trời nhất trong Hệ Mặt Trời. Nhiệt độ bề mặt dao động từ 430°C vào ban ngày xuống -180°C vào ban đêm.</p>
+                    <a href="../page_explore/page2.html?planet=mercury#mercury" class="btn">Khám phá chi tiết</a>
+                    <a href="../page_setup/index.html" class="btn">Mô phỏng 3D</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://science.nasa.gov/wp-content/uploads/2024/03/venus-mariner-10-pia23791-fig2-16x9-1.jpg?resize=1536,864" alt="Sao Kim">
+                <div class="card-content">
+                    <h3>Sao Kim</h3>
+                    <p>Hành tinh nóng nhất với nhiệt độ bề mặt lên đến 462°C nhờ hiệu ứng nhà kính mạnh mẽ từ khí quyển dày đặc.</p>
+                    <a href="../page_explore/page2.html?planet=venus#venus" class="btn">Khám phá chi tiết</a>
+                    <a href="../page_setup/index.html" class="btn">Mô phỏng 3D</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://science.nasa.gov/wp-content/uploads/2024/03/blue-marble-apollo-17-16x9-1.jpg?resize=1536,864" alt="Trái Đất">
+                <div class="card-content">
+                    <h3>Trái Đất</h3>
+                    <p>Hành tinh duy nhất có sự sống với khí quyển giàu oxy và 71% bề mặt được bao phủ bởi nước.</p>
+                    <a href="../page_explore/page2.html?planet=earth#earth" class="btn">Khám phá chi tiết</a>
+                    <a href="../page_setup/index.html" class="btn">Mô phỏng 3D</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://science.nasa.gov/wp-content/uploads/2024/03/mars-full-globe-16x9-1.jpg?resize=1536,864" alt="Sao Hỏa">
+                <div class="card-content">
+                    <h3>Sao Hỏa</h3>
+                    <p>Hành tinh đỏ với bằng chứng nước chảy trong quá khứ, là mục tiêu tìm kiếm dấu hiệu sự sống.</p>
+                    <a href="../page_explore/page2.html?planet=mars#mars" class="btn">Khám phá chi tiết</a>
+                    <a href="../page_setup/index.html" class="btn">Mô phỏng 3D</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://science.nasa.gov/wp-content/uploads/2024/03/jupiter-marble-pia22946-16x9-1.jpg?resize=1536,864" alt="Sao Mộc">
+                <div class="card-content">
+                    <h3>Sao Mộc</h3>
+                    <p>Hành tinh lớn nhất với cơn bão Vết Đỏ Lớn và ít nhất 79 vệ tinh tự nhiên.</p>
+                    <a href="../page_explore/page2.html?planet=jupiter#jupiter" class="btn">Khám phá chi tiết</a>
+                    <a href="../page_setup/index.html" class="btn">Mô phỏng 3D</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://science.nasa.gov/wp-content/uploads/2023/05/saturn-farewell-pia21345-sse-banner-1920x640-1.jpg?resize=1536,512" alt="Sao Thổ">
+                <div class="card-content">
+                    <h3>Sao Thổ</h3>
+                    <p>Nổi bật với hệ thống vành đai đẹp mắt làm từ băng và đá, cùng ít nhất 82 vệ tinh.</p>
+                    <a href="../page_explore/page2.html?planet=saturn#saturn" class="btn">Khám phá chi tiết</a>
+                    <a href="../page_setup/index.html" class="btn">Mô phỏng 3D</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://science.nasa.gov/wp-content/uploads/2024/03/uranus-pia18182-16x9-1.jpg?resize=1536,864" alt="Sao Thiên Vương">
+                <div class="card-content">
+                    <h3>Sao Thiên Vương</h3>
+                    <p>Hành tinh quay "nằm ngang" với màu xanh da trời do khí methane trong khí quyển.</p>
+                    <a href="../page_explore/page2.html?planet=uranus#uranus" class="btn">Khám phá chi tiết</a>
+                    <a href="../page_setup/index.html" class="btn">Mô phỏng 3D</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://science.nasa.gov/wp-content/uploads/2024/03/pia01492-neptune-full-disk-16x9-1.jpg?resize=1536,864" alt="Sao Hải Vương">
+                <div class="card-content">
+                    <h3>Sao Hải Vương</h3>
+                    <p>Hành tinh xa nhất với gió mạnh nhất Hệ Mặt Trời, lên đến 2.100 km/h.</p>
+                    <a href="../page_explore/page2.html?planet=neptune#neptune" class="btn">Khám phá chi tiết</a>
+                    <a href="../page_setup/index.html" class="btn">Mô phỏng 3D</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore Section -->
+    <section id="explore" class="fact-section">
+        <div class="container">
+            <h2 class="section-title">Khám phá thêm về Hệ Mặt Trời</h2>
+            <div class="fact-box">
+                <h3>Tại sao nên khám phá chi tiết?</h3>
+                <p>Khám phá Hệ Mặt Trời qua mô hình 3D và Mô phỏng 3D giúp bạn hình dung rõ ràng hơn về cấu trúc và chuyển động của các hành tinh. Từ mô hình 3D chi tiết của từng hành tinh đến mô phỏng quỹ đạo 2D, bạn sẽ có trải nghiệm học tập trực quan và thú vị!</p>
+                <a href="../page_explore/page2.html" class="btn">Khám phá chi tiết</a>
+                <a href="../page_setup/index.html" class="btn">Mô phỏng 3D</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (giữ nguyên) -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Khám phá Hệ Mặt Trời</h3>
+                <p>Website giáo dục về Hệ Mặt Trời dành cho học sinh và những người yêu thích khám phá vũ trụ.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên kết nhanh</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Trang chủ</a></li>
+                    <li><a href="#sun">Mặt Trời</a></li>
+                    <li><a href="#planets">Các hành tinh</a></li>
+                    <li><a href="#explore">Khám phá vũ trụ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Tài nguyên</h3>
+                <ul class="footer-links">
+                    <li><a href="https://science.nasa.gov/">Trung tâm Nasa</a></li>
+                    <li><a href="https://www.google.com/">Nguồn khác</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p>Email: contact@tptth.vn</p>
+                <p>Điện thoại: 0353-099-jqk</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Giới thiệu về Hệ Mặt Trời. Website được thiết kế bởi nhóm 3.</p>
+        </div>
+    </footer>
+</body>
+</html>
