@@ -20,7 +20,7 @@
 <p>Tốc độ thời gian: Điều chỉnh tốc độ quỹ đạo</p>
 <p>Chế độ xem: Chuyển đổi giữa chế độ 3D và 2D</p>
 <p>Thông tin: Panel hiển thị dữ liệu thực tế về hành tinh</p>
-<h3>🌍 Demo trực tiếp : [🔗 Khám phá ngay tại đây](https://hanphanr1.github.io/solar_system/project_solar_system/mainpage/index.html)</h3>
+<h3>🌍 Demo trực tiếp : <a href = "https://hanphanr1.github.io/solar_system/project_solar_system/mainpage/index.html">🔗 Khám phá ngay tại đây </a></h3>
 
 <h3>🚀 Cài đặt và chạy</h3>
 <p>git clone https://github.com/hanphanr1/solar_system.git</p>
